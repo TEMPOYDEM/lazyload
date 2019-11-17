@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="site.css">
+	<meta charset="UTF-8">
+	<title>Site lorem</title>
+</head>
+<body>
+	<img src="p1.png" data-src="pic1.jpg" class="blur">
+	<p id='text1'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id in necessitatibus reiciendis, iusto error adipisci eligendi dolorum optio eius natus blanditiis illum magnam temporibus quaerat sed omnis! Est, ut, excepturi? ipsum dolor sit amet, consectetur adipisicing elit. Aperiam quaerat, nulla laborum consequatur iste non commodi eligendi! Repellat consequuntur vitae enim recusandae? Officia reiciendis, atque sapiente error! Alias, necessitatibus, doloremque? ipsum dolor sit amet, consectetur adipisicing elit. Itaque enim consectetur maiores ullam recusandae facilis, ex dolore maxime, eum ratione sunt beatae reprehenderit nesciunt. Est magnam rerum nulla error veritatis!</b>
+		<img src="p2.png" data-src="pic2.jpg" class="blur">
+		<p id='text2'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, praesentium sapiente labore cumque repellat unde eos in facilis accusamus, quasi non. Nemo doloremque error repellat amet quae ratione beatae placeat. ipsum dolor sit amet, consectetur adipisicing elit. Porro vitae, commodi unde numquam deleniti necessitatibus in fugit maxime nihil, exercitationem voluptate! Cum beatae dolorum quo molestiae at iusto! Laboriosam, facere. ipsum dolor sit amet, consectetur adipisicing elit. Corporis ex dignissimos tempore, quas laudantium nihil veniam autem molestiae. Placeat, aliquam dolorem molestiae eos, ipsum velit. Sed id, suscipit magnam excepturi! ipsum dolor sit amet, consectetur adipisicing elit. Aperiam sit, vitae! Voluptates facere alias beatae eveniet similique perspiciatis placeat, nobis exercitationem earum esse. Delectus placeat ipsa nisi, repudiandae iusto quasi.</b>
+			<img src="p3.png" data-src="pic3.jpg" class="blur">
+		</body>
+		<script type="text/javascript">
+			document.addEventListener('DOMContentLoaded', function(){
+				//alert('Содержимое загружено');
+
+				var counter = 0;
+
+
+				document.addEventListener('scroll',
+					function() {
+						counter ++;
+						console.log (`Прокрутка ${counter}`);
+					},false)
+
+				document.addEventListener('scroll',lazyLoad, false);
+			});
+			function lazyLoad() {
+				let lazyList = document.querySelectorAll('.blur')
+				for (let lazy of lazyList) {
+					//alert (lazy.hasAttribute('data-src'))
+					if (lazy.hasAttribute('data-src')) {
+						console.log(lazy, ' ');
+						let data = lazy.getAttribute('data-src')
+						console.log(data);
+						lazy.setAttribute('src',data);
+						//alert(lazy.getAttribute('src'))
+						lazy.src = data;
+						//alert(lazy.getAttribute('src'))
+					}
+				}
+				document.removeEventListener('scroll', lazyLoad)
+			}
+		</script>
+		</html>
